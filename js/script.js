@@ -1,11 +1,5 @@
 
-const container = document.querySelector('.pad');
-let colorImput = document.querySelector('.colorImput');
-let clickImput = document.querySelector('.clickImput');
-const appSwitch = document.querySelector('.switch_Box')
 
-let inputArray = [];
-let secondInputArray = [];
 let num1 = '';
 let num2 = '';
 let plus;
@@ -27,7 +21,11 @@ function storeNumbers(input) {
 		numberInput(input);
 	} else if (input.classList.contains('decimal')) {
 		decimalAdd(input);
-	} else if (input.classList.contains('operate')) {
+	} else if (input.classList.contains('negative')) {
+        turnNegative();
+    } else if (input.classList.contains('percent')) {
+            turnPercent();
+    } else if (input.classList.contains('operate')) {
 		numberOperate(input);
 	} else if (input.classList.contains('equals') && num1 && operator && num2) {
 		equalTo();
@@ -61,61 +59,99 @@ function numberOperate (input) {
     } else if (input.classList.contains('operate') && (num2 != '')) {
         console.log("equalto");
         equalTo();
+}}
 
-    }}
+function decimalAdd() {
+    num1 = num1.toString();
+    num2 = num2.toString();
+    
+    if ((num1 === '') && (num2 === '')) {
+        return
+    } else if ((num2 === '') && (num1 != '') && (!num1.includes("."))){
+        num1 = num1+".";
+        updateScreen();
+    } else if ((num1 === '') && (num2 != '') && (!num2.includes("."))){
+            num2 = num2+".";
+            updateScreen();
+    } else if ((num1 != '') && (num2 != '') && (!num2.includes("."))){
+        num2 = num2+".";
+        updateScreen();
+}}
+
+function turnPercent () {
+    if ((num1 === '') && (num2 === '')) {
+        return
+    } else if ((num2 === '') && (num1 != '')){
+        num1 = +num1 / 100;
+        updateScreen();
+    } else if ((num1 === '') && (num2 != '')){
+            num2 = +num2 / 100;
+            updateScreen();
+    } else if ((num1 != '') && (num2 != '')){
+        num2 = +num2 / 100;
+        updateScreen();
+}}
+
+function turnNegative () {
+    if ((num1 === '') && (num2 === '')) {
+        return
+    } else if ((num2 === '') && (num1 != '')){
+        num1 = -num1;
+        updateScreen();
+    } else if ((num1 === '') && (num2 != '')){
+            num2 = -num2;
+            updateScreen();
+    } else if ((num1 != '') && (num2 != '')){
+        num2 = -num2;
+        updateScreen();
+}}
 
 function addition() {
-result = +num1 + +num2;
-        console.log(num1);
-        console.log(num2);
-        console.log(result);
-        return result;
+result = parseFloat(num1) + parseFloat(num2);
+        return roundNumber(result);
 }
 
 function subtraction() {
-    result = +num1 - +num2;
-            return result;
+    result = parseFloat(num1) - parseFloat(num2);
+            return roundNumber(result);
 }
     
 function multiply() {
-    result = +num1 * +num2;
-    return result;
+    result = parseFloat(num1) * parseFloat(num2);
+    return roundNumber(result);
 }
 
 function divide() {
-    result = +num1 / +num2;
-    return result;
+    result = parseFloat(num1) / parseFloat(num2);
+    return roundNumber(result);
 }
 
 function equalTo() {
     if (operator === '+'){
     result = addition();
+    //result = result.toString();
     displayHistory.innerText = result;
     num2 = '';
     num1 = result;
     } else if (operator === '-') {
         result = subtraction();
+        //result = result.toString();
         displayHistory.innerText = result;
         num2 = '';
         num1 = result;
     } else if (operator === '*') {
         result = multiply();
+       // result = result.toString();
         displayHistory.innerText = result;
         num2 = '';
         num1 = result;
     } else if (operator === '/') {
         result = divide();
+        //result = result.toString();
         displayHistory.innerText = result;
         num2 = '';
         num1 = result;
-    }
-}
-
-function decimalAdd() {
-    if (num2 === '') {
-        num1 = num1
-    }
-}
+}}
 
 function clearDisplay() {
     displayHistory.innerText = '';
@@ -127,6 +163,11 @@ function clearDisplay() {
     console.log("clear");
 }
 
+
+function roundNumber(result) {
+result = result.toFixed(5).replace(/\.?0+$/, '');
+return result;
+}
 // function numberEnter(num) {
 //     if (storage.operator === '') {
 //     storage.number1.push(num);

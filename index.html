@@ -7,42 +7,47 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="./styles.css">
     <script src="js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Quantico&display=swap" rel="stylesheet">
   </head>
 
   <body>
 
-    <div class = heading>Calculator</div>
+    <div class = heading></div>
 
     
     <div class = "container">
-      <div id= "displayHistory"> display history</div>
-    <div id= "displayCurrent"> display </div>
+      <div class = "display">
+      <div id= "displayHistory"></div>
+    <div id= "displayCurrent"></div>
+  </div>
 
     <div class = "keyboard"> 
       <div class = "upper">
-        <button class = "clear">CE</button>
-        <button>+/-</button>
-        <button>%</button>
+        <button type="button" class = "clear">CE</button>
+        <button type="button" class = "negative">+/-</button>
+        <button type="button" class = "percent">%</button>
       </div>
       <div class = "operators">
-        <button class = "operate">/</button>
-        <button class = "operate">*</button>
-        <button class = "operate">+</button>
-        <button class = "operate">-</button>
-        <button class = "equals">=</button>
+        <button type="button" class = "operate">/</button>
+        <button type="button" class = "operate">*</button>
+        <button type="button" class = "operate">+</button>
+        <button type="button" class = "operate">-</button>
+        <button type="button" class = "equals">=</button>
       </div>
       <div class = "numbers">
-        <button class = "numberButton">9</button>
-        <button class = "numberButton">8</button>
-        <button class = "numberButton"">7</button>
-        <button class = "numberButton">6</button>
-        <button class = "numberButton">5</button>
-        <button class = "numberButton">4</button>
-        <button class = "numberButton">3</button>
-        <button class = "numberButton">2</button>
-        <button class = "numberButton">1</button>
-        <button class = "numberButton">0</button>
-        <button class = "decimal">.</button>
+        <button type="button" class = "numberButton">9</button>
+        <button type="button" class = "numberButton">8</button>
+        <button type="button" class = "numberButton"">7</button>
+        <button type="button" class = "numberButton">6</button>
+        <button type="button" class = "numberButton">5</button>
+        <button type="button" class = "numberButton">4</button>
+        <button type="button" class = "numberButton">3</button>
+        <button type="button" class = "numberButton">2</button>
+        <button type="button" class = "numberButton">1</button>
+        <button id= 'zero' type="button" class = "numberButton">0</button>
+        <button type="button" class = "decimal">.</button>
       </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Quantico&display=swap');
 
 .heading {
   display: flex;
@@ -16,36 +17,59 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 .container {
   width: 400px;
   height: 600px;
+  padding: 5px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  background-color: #505050;
   border: 3px solid black;
+  border-radius: 6px;
+}
+
+.display {
+  text-align: right;
+  background-color: #101010;
+  border-radius: 10px;
 }
 
 #displayHistory {
-  border: 3px solid black;
-  height: 38px;
-  justify-content: center;
-  font-size: 26px;
-  align-items: center;
+  height: 52px;
+  font-family: 'Quantico', sans-serif;
+  font-weight: 300;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-top: 3px solid black;
+  color: antiquewhite;
+  font-size: 40px;
+  padding-right: 9px;
+  border-radius: 10px;
 
 }
 
 #displayCurrent {
-  height: 38px;
-  border: 3px solid black;
-  justify-content: center;
-  font-size: 26px;
-  align-items: center;
+  height: 52px;
+  font-family: 'Quantico', sans-serif;
+  font-weight: 300;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  color: antiquewhite;
+  font-size: 40px;
+  padding-right: 9px;
+  border-radius: 10px;
 }
+
 .keyboard {
-  font-size: 22px;
   display: grid;
   grid-template-columns: 5fr 5fr 5fr 5fr;
-  grid-template-rows: auto;
+  grid-template-rows: minmax(100px, auto) repeat(5, 100px);
+  padding: 5px;
   grid-template-areas: 
   "header header header sidebar"
    "main main main sidebar"
@@ -60,7 +84,6 @@ body {
   align-self: stretch;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
-  border: 3px solid blue;
 }
 
 .operators {
@@ -69,24 +92,45 @@ display: grid;
 align-self: stretch;
 grid-template-columns: 1fr;
 grid-template-rows: auto;
-  border: 3px solid black;
 }
 
 .numbers {
   grid-area: main;
   display: grid;
-
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
-  border: 3px solid black;
+  
 }
 
-input[type="button"] {
-  font-size: 22px;
-  color: red;
+button {
+  font-size: 40px;
+  border-radius: 10px;
+  color: antiquewhite;
+  transition-duration: 0.4s;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.numberButton, .decimal {
+  background-color: #001e70;
+
+}
+
+button:hover{
+  filter: brightness(55%);
 }
 
 
+.operate, .equals {
+  background-color: #ac9a00;
+}
+
+.clear, .negative, .percent {
+  background-color: #01A263;
+}
+
+#zero {
+  grid-column: span 2;
+}
 .footer {
   display: flex;
   align-items: center;
@@ -95,3 +139,4 @@ input[type="button"] {
   font-size: 12px;
   padding: 2px;
 }
+
